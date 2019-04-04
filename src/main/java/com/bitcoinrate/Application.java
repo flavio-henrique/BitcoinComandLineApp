@@ -20,10 +20,9 @@ public class Application {
 
     public void run() {
         HttpRequestFactory httpRequestFactory = new NetHttpTransport()
-                .createRequestFactory((HttpRequest request) -> request.setParser(new JsonObjectParser(new JacksonFactory())));
+                .createRequestFactory();
 
         BitcoinService bitcoinService = new BitcoinService(httpRequestFactory);
-
 
         System.out.println("Please inform the currency (For Example: USD, EUR, GBP, etc.): ");
         String currency = scanner.nextLine();

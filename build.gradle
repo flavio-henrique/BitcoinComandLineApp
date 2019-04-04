@@ -2,17 +2,33 @@ group 'com.bitcoinrate'
 version '1.0.0'
 
 apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
     compile group: 'com.google.http-client', name: 'google-http-client', version: '1.23.0'
     compile group: 'com.google.http-client', name: 'google-http-client-jackson2', version: '1.23.0'
+    compile "com.google.code.gson:gson:2.8.1"
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
 
     testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
     testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.5'
+    testCompile "org.objenesis:objenesis:2.6"
+
+}
+
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        xml.enabled false
+        csv.enabled false
+    }
 }
