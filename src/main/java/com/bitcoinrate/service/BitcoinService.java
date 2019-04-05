@@ -49,7 +49,7 @@ public class BitcoinService {
         return dateFormat.format(endDate);
     }
 
-    public HistoricalResponse getHistoricalPrice(String currency) throws Exception{
+    public HistoricalResponse getHistoricalPrice(String currency) throws IOException{
         CoinDeskUrl historicalPriceUrl = new CoinDeskUrl("https://api.coindesk.com/v1/bpi/historical/close.json");
         historicalPriceUrl.currency = currency;
         historicalPriceUrl.start = getStartDate();
@@ -62,15 +62,11 @@ public class BitcoinService {
         return gson.fromJson(IOUtils.toString(httpResponse.getContent(), StandardCharsets.UTF_8.name()), HistoricalResponse.class);
     }
 
-    public OptionalDouble getLowestValue(Collection<Float> values) {
-        return values.stream()
-                .mapToDouble((value) -> value)
-                .min();
+    public OptionalDouble getLowestValue(Collection<Double> values) {
+        return values.stream().mapToDouble((value) -> value).min();
     }
 
-    public OptionalDouble getHighestValue(Collection<Float> values) {
-        return values.stream()
-                .mapToDouble((value) -> value)
-                .max();
+    public OptionalDouble getHighestValue(Collection<Double> values) {
+        return values.stream().mapToDouble((value) -> value).max();
     }
 }

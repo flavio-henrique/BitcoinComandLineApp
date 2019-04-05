@@ -1,17 +1,12 @@
 package com.bitcoinrate.model;
 
-import com.google.api.client.util.Key;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class HistoricalResponse {
-    @Key
     private String disclaimer;
-    @Key
     private Time time;
-    @Key
-    private Map<String, Float> bpi = new HashMap<>();
+    private Map<String, Double> bpi = new HashMap<>();
 
     public String getDisclaimer() {
         return disclaimer;
@@ -29,11 +24,34 @@ public class HistoricalResponse {
         this.time = time;
     }
 
-    public Map<String, Float> getBpi() {
+    public Map<String, Double> getBpi() {
         return bpi;
     }
 
-    public void setBpi(Map<String, Float> bpi) {
+    public void setBpi(Map<String, Double> bpi) {
         this.bpi = bpi;
+    }
+
+    public static class Builder {
+        HistoricalResponse historicalResponse = new HistoricalResponse();
+
+        public Builder withDisclaimer(String disclaimer) {
+            historicalResponse.setDisclaimer(disclaimer);
+            return this;
+        }
+
+        public Builder withTime(Time time) {
+            historicalResponse.setTime(time);
+            return this;
+        }
+
+        public Builder withBpi(Map<String, Double> bpi) {
+            historicalResponse.setBpi(bpi);
+            return this;
+        }
+
+        public HistoricalResponse build() {
+            return historicalResponse;
+        }
     }
 }

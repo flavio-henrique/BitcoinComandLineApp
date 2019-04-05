@@ -1,10 +1,9 @@
 package com.bitcoinrate.model;
 
-import com.google.api.client.util.DateTime;
-import com.google.api.client.util.Key;
-
 public class Time {
-    @Key
+    public Time(String updated) {
+        this.updated = updated;
+    }
     private String updated;
 
     public String getUpdated() {

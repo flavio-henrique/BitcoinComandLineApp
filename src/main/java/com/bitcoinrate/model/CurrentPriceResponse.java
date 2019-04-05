@@ -1,16 +1,14 @@
 package com.bitcoinrate.model;
 
-import com.google.api.client.util.Key;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class CurrentPriceResponse {
-    @Key
+
     private Time time;
-    @Key
+
     private String disclaimer;
-    @Key
+
     private Map<String, Bpi> bpi = new HashMap<>();
 
     public Time getTime() {

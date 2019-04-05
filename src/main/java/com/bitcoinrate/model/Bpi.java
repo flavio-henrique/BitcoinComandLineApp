@@ -1,15 +1,9 @@
 package com.bitcoinrate.model;
 
-import com.google.api.client.util.Key;
-
 public class Bpi {
-    @Key
     private String code;
-    @Key
     private String rate;
-    @Key
     private String description;
-    @Key
     private float rate_float;
 
     public String getCode() {
